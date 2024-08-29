@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}{% endblock %}
+        {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+        <nav class="bg-gray-800 text-white p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="{{ path('app_home') }}" class="text-2xl font-bold">Price Comparison</a>
+                <ul class="flex space-x-4">
+                    <li><a href="{{ path('app_home') }}" class="hover:text-gray-300">Home</a></li>
+                    <li><a href="{{ path('app_categories') }}" class="hover:text-gray-300">Categories</a></li>
+                </ul>
+            </div>
+        </nav>
+        {% block body %}{% endblock %}
+    </body>
+</html>

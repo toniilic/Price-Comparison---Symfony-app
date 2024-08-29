@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+<div class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">{{ product.name }}</h1>
+        
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="md:flex">
+                <div class="md:flex-shrink-0">
+                    <img src="{{ product.imageUrl }}" alt="{{ product.name }}" class="h-48 w-full object-cover md:w-48">
+                </div>
+                <div class="p-8">
+                    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ product.category.name }}</div>
+                    <p class="mt-2 text-gray-600">{{ product.description }}</p>
+                    <div class="mt-4">
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Prices:</h2>
+                        <ul class="space-y-4">
+                            {% for price in product.prices %}
+                                <li class="flex justify-between items-center bg-gray-50 p-4 rounded-lg shadow">
+                                    <span class="font-semibold text-gray-700">{{ price.vendor.name }}</span>
+                                    <span class="text-2xl font-bold text-green-600">€{{ price.price|number_format(2, '.', ',') }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <a href="{{ path('app_home') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
